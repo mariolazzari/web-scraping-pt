@@ -1,0 +1,27 @@
+{
+  "name": "web-scraping-pt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariolazzari/web-scraping-pt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariolazzari/web-scraping-pt/issues"
+  },
+  "homepage": "https://github.com/mariolazzari/web-scraping-pt#readme",
+  "dependencies": {
+    "puppeteer": "^10.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
