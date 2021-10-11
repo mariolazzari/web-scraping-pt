@@ -11,8 +11,15 @@ const puppeteer = require("puppeteer");
   await page.goto("https://machadopedro.com/");
   // take screenshot
   await page.screenshot({ path: "myWwbsite.png" });
-  // get page data
-  const data = await page.evaluate(() => {});
+  // get page paragraph
+  const getParagraph = await page.evaluate(() => {
+    const pgTag = document.querySelector(".col-lg-6.intro-content p");
+
+    //return pgTag.innerHTML;
+    return pgTag.innerText;
+  });
+
+  console.log(getParagraph);
 
   // close browser
   await browser.close();
