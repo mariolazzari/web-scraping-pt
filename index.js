@@ -52,9 +52,12 @@ const puppeteer = require("puppeteer");
   });
   console.log(getQuotes);
 
-  // click on login
+  // test login section
   await quotesPage.click('a[href="/login"]');
+  await quotesPage.type("#username", "mario", { delay: 100 });
+  await quotesPage.type("#password", "123456", { delay: 100 });
+  await quotesPage.click('input[value="Login"]');
 
   // close browser
-  // await browser.close();
+  await browser.close();
 })();
