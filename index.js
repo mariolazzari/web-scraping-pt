@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 (async () => {
   // browser init
   const browser = await puppeteer.launch({
-    // headless: false,
+    headless: false,
   });
   // open new tab
   const page = await browser.newPage();
@@ -30,9 +30,31 @@ const puppeteer = require("puppeteer");
 
     return techs;
   });
-
   console.log(getTechnologies);
 
+  // quotes
+  const quotesPage = await browser.newPage();
+  await quotesPage.goto("https://quotes.toscrape.com/");
+
+  const getQuotes = await quotesPage.evaluate(() => {
+    const quotes = document.querySelectorAll(".quote");
+    let quotesArray = [];
+
+    quotes.forEach(quoteTag => {
+      const quoteInfo = quoteTag.querySelectorAll("span");
+      const quote = quoteInfo[0].innerText;
+      const author = quoteInfo[1].querySelector("small").innerText;
+
+      quotesArray.push({ quote, author });
+    });
+
+    return quotesArray;
+  });
+  console.log(getQuotes);
+
+  // click on login
+  await quotesPage.click('a[href="/login"]');
+
   // close browser
-  await browser.close();
+  // await browser.close();
 })();
